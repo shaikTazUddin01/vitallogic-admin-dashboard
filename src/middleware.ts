@@ -7,9 +7,11 @@ const AuthRoutes = ["/login"];
 
 
 
+
 export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
-  // console.log(pathname);
+
+  console.log(pathname);
   const accessToken = request.cookies.get("accessToken")?.value;
  
 
@@ -19,13 +21,14 @@ export async function middleware(request: NextRequest) {
   if (accessToken) {
     try {
       user = (await decodedToken(accessToken)) as TUser | undefined;
+
     } catch (error) {
       console.error("Token decoding failed:", error);
     }
   }
 
  
-  if (user && user.role=="ADMIN") {
+  if (user && user.role=="Admin") {
   
     if (AuthRoutes.includes(pathname)) {
       return NextResponse.redirect(new URL("/", request.url));

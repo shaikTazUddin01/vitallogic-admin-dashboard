@@ -1,7 +1,7 @@
 import React from 'react';
 import LoadingLayout from '../components/loading/layoutLoading';
 
-const loading = () => {
+const RootLoading = () => {
     return (
         <div>
             <LoadingLayout/>
@@ -9,4 +9,4 @@ const loading = () => {
     );
 };
 
-export default loading;
+export default RootLoading;
