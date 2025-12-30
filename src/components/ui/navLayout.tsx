@@ -24,7 +24,9 @@ const NavLayout: React.FC<NavLayoutProps> = ({ children }) => {
 
   // Determine active menu key based on pathname
   const selectedKey = useMemo(() => {
-    if (pathname.startsWith("/newOrder")) return "newOrder";
+    if (pathname.startsWith("/newOrder")) return "New Order";
+    if (pathname.startsWith("/createProduct")) return "Create Product";
+    if (pathname.startsWith("/manageProduct")) return "Manage Product";
     return "dashboard";
   }, [pathname]);
 
@@ -38,7 +40,24 @@ const NavLayout: React.FC<NavLayoutProps> = ({ children }) => {
     {
       key: "newOrder",
       icon: <UserOutlined />,
-      label: <Link href="/newOrder">Users</Link>,
+      label: <Link href="/newOrder">New Order</Link>,
+    },
+    {
+      key: "productManagement",
+      icon: <UserOutlined />,
+      label: "Product Management",
+      children:[
+        {
+          key:"createProduct",
+          icon: <UserOutlined />,
+          label:<Link href="/createProduct">Create Product</Link>
+        },
+         {
+          key:"manageProduct",
+          icon: <UserOutlined />,
+          label:<Link href="/manageProduct">ManageProduct</Link>
+        }
+      ]
     },
   ];
 
